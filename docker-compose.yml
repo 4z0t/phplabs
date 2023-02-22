@@ -45,6 +45,7 @@ services:
   
   composer:
     image: composer:latest
+    container_name: phplabs-composer
     volumes:
       - ${APP_PATH_HOST}:${APP_PATH_CONTAINER}
     working_dir: ${APP_PATH_CONTAINER}
