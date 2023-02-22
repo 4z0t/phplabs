@@ -2,17 +2,14 @@ version: "3.7"
 services:
   app:
     build:
-      args:
-        user: 4z0t
-        uid: 1000
       context: ./
       dockerfile: Dockerfile
     image: phplabs
     container_name: phplabs-app
     restart: unless-stopped
-    working_dir: /var/www/
+    working_dir: ${APP_PATH_CONTAINER}
     volumes:
-      - ./:/var/www
+      - ${APP_PATH_HOST}:${APP_PATH_CONTAINER}
     networks:
       - phplabs
 
@@ -25,6 +22,8 @@ services:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       MYSQL_PASSWORD: ${DB_PASSWORD}
       MYSQL_USER: ${DB_USERNAME}
+      MYSQL_ALLOW_EMPTY_PASSWORD: ${DB_EMPTY_PASSWORD}
+      MYSQL_RANDOM_ROOT_PASSWORD: ${DB_RANDOM_PASSWORD}
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     volumes:
@@ -39,8 +38,17 @@ services:
     ports:
       - 8000:80
     volumes:
-      - ./:/var/www
+      - ${APP_PATH_HOST}:${APP_PATH_CONTAINER}
       - ./docker-compose/nginx:/etc/nginx/conf.d
+    networks:
+      - phplabs
+  
+  composer:
+    image: composer:latest
+    volumes:
+      - ${APP_PATH_HOST}:${APP_PATH_CONTAINER}
+    working_dir: ${APP_PATH_CONTAINER}
+    command: composer install
     networks:
       - phplabs
 
