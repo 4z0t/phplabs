@@ -16,8 +16,8 @@ class UserValidator extends IValidator
     public static function constrains(): array
     {
         return [
-            "name" => [new NotBlank(),],
-            "mail" => [new NotBlank(),],
+            "name" => [new NotBlank(), new Length(["min" => 1,])],
+            "mail" => [new NotBlank(), new Length(["min" => 1,])],
         ];
     }
 }

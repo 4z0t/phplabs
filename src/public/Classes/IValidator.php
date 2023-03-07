@@ -3,10 +3,7 @@
 namespace Classes;
 
 use Symfony\Component\Validator\Validator\ValidatorInterface;
-use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Validation;
-
 
 abstract class IValidator
 {
@@ -23,7 +20,7 @@ abstract class IValidator
     {
         $errors = [];
         foreach ($this->constrains() as $field => $constrains) {
-            $errors[] = $this->validator->validate($var->$field, $constrains);
+            $errors[$field] = $this->validator->validate($var->$field, $constrains);
         }
         return $errors;
     }
