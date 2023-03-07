@@ -50,7 +50,10 @@ require __DIR__ . '/../vendor/autoload.php';
 */
 
 require_once __DIR__ . '/Classes/User.php';
+require_once __DIR__ . '/Classes/IValidator.php';
+require_once __DIR__ . '/Classes/UserValidator.php';
 use Classes\User;
+use Classes\UserValidator;
 $app = require_once __DIR__ . '/../bootstrap/app.php';
 
 // $kernel = $app->make(Kernel::class);
@@ -67,7 +70,6 @@ echo "ABOBA";
 
 
 
-readfile("index.html");
 
 $user1 = new User("Sasha", "Mail");
 $user2 = new User("", "");
@@ -75,16 +77,15 @@ $user2 = new User("", "");
 
 
 
-$validator = Validation::createValidator();
+$validator = new UserValidator();
 $errors1 = $validator->validate($user1);
 $errors2 = $validator->validate($user2);
 
 if (count($errors1) > 0) {
     $errstr = (string) $errors1;
-    echo "1:$errstr";
+    echo "1:{$errstr}";
 }
-
 if (count($errors2) > 0) {
     $errstr = (string) $errors2;
-    echo "2:$errstr";
+    echo "2:{$errstr}";
 }
