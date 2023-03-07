@@ -2,6 +2,11 @@
 
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Validation;
 
 define('LARAVEL_START', microtime(true));
 
@@ -16,7 +21,7 @@ define('LARAVEL_START', microtime(true));
 |
 */
 
-if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
+if (file_exists($maintenance = __DIR__ . '/../storage/framework/maintenance.php')) {
     require $maintenance;
 }
 
@@ -31,7 +36,7 @@ if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php'))
 |
 */
 
-require __DIR__.'/../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -44,12 +49,42 @@ require __DIR__.'/../vendor/autoload.php';
 |
 */
 
-$app = require_once __DIR__.'/../bootstrap/app.php';
+require_once __DIR__ . '/Classes/User.php';
+use Classes\User;
+$app = require_once __DIR__ . '/../bootstrap/app.php';
 
-$kernel = $app->make(Kernel::class);
+// $kernel = $app->make(Kernel::class);
 
-$response = $kernel->handle(
-    $request = Request::capture()
-)->send();
+// $response = $kernel->handle(
+//     $request = Request::capture()
+// )->send();
 
-$kernel->terminate($request, $response);
+// $kernel->terminate($request, $response);
+
+
+echo "Hello from PHP\n";
+echo "ABOBA";
+
+
+
+readfile("index.html");
+
+$user1 = new User("Sasha", "Mail");
+$user2 = new User("", "");
+
+
+
+
+$validator = Validation::createValidator();
+$errors1 = $validator->validate($user1);
+$errors2 = $validator->validate($user2);
+
+if (count($errors1) > 0) {
+    $errstr = (string) $errors1;
+    echo "1:$errstr";
+}
+
+if (count($errors2) > 0) {
+    $errstr = (string) $errors2;
+    echo "2:$errstr";
+}
