@@ -1,6 +1,6 @@
 <?php
 
-namespace Classes;
+namespace App\Classes;
 
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Validator\Validation;

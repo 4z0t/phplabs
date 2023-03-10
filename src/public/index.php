@@ -44,10 +44,6 @@ require __DIR__ . '/../vendor/autoload.php';
 |
 */
 
-require_once __DIR__ . '/Classes/User.php';
-require_once __DIR__ . '/Classes/IValidator.php';
-require_once __DIR__ . '/Classes/UserValidator.php';
-require_once __DIR__ . '/Classes/Comment.php';
 
 $app = require_once __DIR__ . '/../bootstrap/app.php';
 

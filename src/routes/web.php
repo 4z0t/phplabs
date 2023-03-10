@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-use Classes\User;
-use Classes\UserValidator;
-use Classes\Comment;
+use App\Classes\User;
+use App\Classes\UserValidator;
+use App\Classes\Comment;
 
 /*
 |--------------------------------------------------------------------------

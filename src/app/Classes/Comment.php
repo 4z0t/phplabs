@@ -1,8 +1,8 @@
 <?php
 
-namespace Classes;
+namespace App\Classes;
 
-use Classes\User;
+use App\Classes\User;
 
 
 class Comment

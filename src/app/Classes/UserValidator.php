@@ -1,14 +1,14 @@
 <?php
 
-namespace Classes;
+namespace App\Classes;
 
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Validation;
 
-use Classes\User;
-use Classes\IValidator;
+
+use App\Classes\IValidator;
 
 
 class UserValidator extends IValidator
