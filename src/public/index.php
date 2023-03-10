@@ -86,20 +86,38 @@ function Test()
     $errors2 = $validator->validate($user2);
 
 
-    echo "user1\n";
+    echo "user1" . "<br/>";
     foreach ($errors1 as $k => $v) {
         if (count($v) > 0) {
-            echo $k . " " . (string)$v . "\n";
+            echo $k . " " . (string)$v . "<br/>";
         }
     }
-    echo "user2\n";
+    echo "user2" . "<br/>";
     foreach ($errors2 as $k => $v) {
         if (count($v) > 0) {
-            echo $k . " " . (string)$v . "\n";
+            echo $k . " " . (string)$v . "<br/>";
         }
     }
 
-    
+
+
+    $comments = [
+        new Comment($user1, "Hello world!"),
+        new Comment($user1, "AAAAAAA"),
+        new Comment($user2, "BBBBBBBBBB"),
+        new Comment($user2, ",mfnsdkjfhdskfhksdfj"),
+    ];
+
+    $checkDate = new DateTime('now');
+    $checkDate->modify('-1 month');
+
+
+    foreach ($comments as $comment) {
+        if($comment->user->creationTime > $checkDate)
+        {
+            echo $comment->text . "<br/>";
+        }
+    }
 }
 
 Test();
