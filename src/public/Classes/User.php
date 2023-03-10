@@ -18,4 +18,9 @@ class User
     }
 
 
+    public function SetCreationTime(DateTime $date)
+    {
+        $this->creationTime = $date;
+    } 
+
 }
