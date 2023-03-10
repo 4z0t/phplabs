@@ -49,75 +49,17 @@ require __DIR__ . '/../vendor/autoload.php';
 |
 */
 
-
-
-
-// $kernel = $app->make(Kernel::class);
-
-// $response = $kernel->handle(
-//     $request = Request::capture()
-// )->send();
-
-// $kernel->terminate($request, $response);
-
 require_once __DIR__ . '/Classes/User.php';
 require_once __DIR__ . '/Classes/IValidator.php';
 require_once __DIR__ . '/Classes/UserValidator.php';
 require_once __DIR__ . '/Classes/Comment.php';
 
-use Classes\User;
-use Classes\UserValidator;
-use Classes\Comment;
-
 $app = require_once __DIR__ . '/../bootstrap/app.php';
 
-function Test()
-{
+$kernel = $app->make(Kernel::class);
 
+$response = $kernel->handle(
+    $request = Request::capture()
+)->send();
 
-    $user1 = new User("Sasha", "Mail");
-    $user2 = new User("", "");
-
-    $user1->creationTime->modify('-1 year');
-
-
-    $validator = new UserValidator();
-    $errors1 = $validator->validate($user1);
-    $errors2 = $validator->validate($user2);
-
-
-    echo "user1" . "<br/>";
-    foreach ($errors1 as $k => $v) {
-        if (count($v) > 0) {
-            echo $k . " " . (string)$v . "<br/>";
-        }
-    }
-    echo "user2" . "<br/>";
-    foreach ($errors2 as $k => $v) {
-        if (count($v) > 0) {
-            echo $k . " " . (string)$v . "<br/>";
-        }
-    }
-
-
-
-    $comments = [
-        new Comment($user1, "Hello world!"),
-        new Comment($user1, "AAAAAAA"),
-        new Comment($user2, "BBBBBBBBBB"),
-        new Comment($user2, ",mfnsdkjfhdskfhksdfj"),
-    ];
-
-    $checkDate = new DateTime('now');
-    $checkDate->modify('-1 month');
-
-
-    foreach ($comments as $comment) {
-        if($comment->user->creationTime > $checkDate)
-        {
-            echo $comment->text . "<br/>";
-        }
-    }
-}
-
-Test();
+$kernel->terminate($request, $response);
