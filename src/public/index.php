@@ -71,30 +71,35 @@ use Classes\Comment;
 
 $app = require_once __DIR__ . '/../bootstrap/app.php';
 
+function Test()
+{
 
 
-$user1 = new User("Sasha", "Mail");
-$user2 = new User("", "");
+    $user1 = new User("Sasha", "Mail");
+    $user2 = new User("", "");
+
+    $user1->creationTime->modify('-1 year');
 
 
+    $validator = new UserValidator();
+    $errors1 = $validator->validate($user1);
+    $errors2 = $validator->validate($user2);
 
 
-$validator = new UserValidator();
-$errors1 = $validator->validate($user1);
-$errors2 = $validator->validate($user2);
-
-
-echo "user1\n";
-foreach ($errors1 as $k => $v) {
-    if (count($v) > 0) {
-        echo $k . " " . (string)$v . "\n";
+    echo "user1\n";
+    foreach ($errors1 as $k => $v) {
+        if (count($v) > 0) {
+            echo $k . " " . (string)$v . "\n";
+        }
     }
-}
-echo "user2\n";
-foreach ($errors2 as $k => $v) {
-    if (count($v) > 0) {
-        echo $k . " " . (string)$v . "\n";
+    echo "user2\n";
+    foreach ($errors2 as $k => $v) {
+        if (count($v) > 0) {
+            echo $k . " " . (string)$v . "\n";
+        }
     }
+
+    
 }
 
-
+Test();

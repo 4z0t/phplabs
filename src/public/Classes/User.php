@@ -16,11 +16,4 @@ class User
         $this->mail = $mail;
         $this->creationTime = new DateTime('now');
     }
-
-
-    public function SetCreationTime(DateTime $date)
-    {
-        $this->creationTime = $date;
-    } 
-
 }
