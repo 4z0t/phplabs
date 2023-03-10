@@ -49,14 +49,8 @@ require __DIR__ . '/../vendor/autoload.php';
 |
 */
 
-require_once __DIR__ . '/Classes/User.php';
-require_once __DIR__ . '/Classes/IValidator.php';
-require_once __DIR__ . '/Classes/UserValidator.php';
 
-use Classes\User;
-use Classes\UserValidator;
-
-$app = require_once __DIR__ . '/../bootstrap/app.php';
+//$app = require_once __DIR__ . '/../bootstrap/app.php';
 
 // $kernel = $app->make(Kernel::class);
 
@@ -66,6 +60,12 @@ $app = require_once __DIR__ . '/../bootstrap/app.php';
 
 // $kernel->terminate($request, $response);
 
+require_once __DIR__ . '/Classes/User.php';
+require_once __DIR__ . '/Classes/IValidator.php';
+require_once __DIR__ . '/Classes/UserValidator.php';
+
+use Classes\User;
+use Classes\UserValidator;
 
 echo "Hello from PHP\n";
 echo "ABOBA";
@@ -90,12 +90,12 @@ $errors2 = $validator->validate($user2);
 echo "user1\n";
 foreach ($errors1 as $k => $v) {
     if (count($v) > 0) {
-        echo $k." ".(string)$v;
+        echo $k . " " . (string)$v;
     }
 }
 echo "user2\n";
 foreach ($errors2 as $k => $v) {
     if (count($v) > 0) {
-        echo $k." ".(string)$v;
+        echo $k . " " . (string)$v;
     }
 }

@@ -2,19 +2,20 @@
 
 namespace Classes;
 
-use Symfony\Component\Validator\Constraints as Assert;
+use DateTime;
 
 class User
 {
-    #[Assert\NotBlank]
-    public string $name;
-
-    #[Assert\NotBlank]
-    public string $mail;
+    public readonly string $name;
+    public readonly string $mail;
+    public readonly DateTime $creationTime;
 
     public function __construct(string $name, string $mail)
     {
         $this->name = $name;
         $this->mail = $mail;
+        $this->creationTime = new DateTime('now');
     }
+
+
 }
