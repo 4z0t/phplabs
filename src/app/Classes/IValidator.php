@@ -16,7 +16,7 @@ abstract class IValidator
 
     public abstract static function constrains(): array;
 
-    public function validate(mixed $var)
+    public function validate(mixed $var): array
     {
         $errors = [];
         foreach ($this->constrains() as $field => $constrains) {

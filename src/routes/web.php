@@ -18,9 +18,6 @@ use App\Classes\Comment;
 */
 
 Route::get('/', function () {
-
-
-
     $user1 = new User("Sasha", "Mail");
     $user2 = new User("", "");
 
