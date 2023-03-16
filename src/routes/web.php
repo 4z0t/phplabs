@@ -33,15 +33,15 @@ Route::get('/', function () {
 
 
     echo "user1" . "<br/>";
-    foreach ($errors1 as $k => $v) {
-        if (count($v) > 0) {
-            echo $k . " " . (string)$v . "<br/>";
+    foreach ($errors1 as $field => $constrainsErrors) {
+        if (count($constrainsErrors) > 0) {
+            echo "$field: $constrainsErrors<br/>";
         }
     }
     echo "user2" . "<br/>";
-    foreach ($errors2 as $k => $v) {
-        if (count($v) > 0) {
-            echo $k . " " . (string)$v . "<br/>";
+    foreach ($errors2 as $field => $constrainsErrors) {
+        if (count($constrainsErrors) > 0) {
+            echo "$field: $constrainsErrors<br/>";
         }
     }
 
