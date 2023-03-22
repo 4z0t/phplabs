@@ -14,20 +14,15 @@ services:
       - phplabs
 
   db:
-    image: mysql:8.0
+    image: postgres:alpine
     container_name: phplabs-db
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: ${DB_DATABASE}
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
-      MYSQL_USER: ${DB_USERNAME}
-      MYSQL_ALLOW_EMPTY_PASSWORD: ${DB_EMPTY_PASSWORD}
-      MYSQL_RANDOM_ROOT_PASSWORD: ${DB_RANDOM_PASSWORD}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
       SERVICE_TAGS: dev
-      SERVICE_NAME: mysql
+      SERVICE_NAME: postgres
     volumes:
-      - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+      - ./docker-compose/postgres:/docker-entrypoint-initdb.d
     networks:
       - phplabs
       
