@@ -18,9 +18,13 @@ services:
     container_name: phplabs-db
     restart: unless-stopped
     environment:
+      POSTGRES_USER: ${DB_USERNAME}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: docker
       SERVICE_TAGS: dev
       SERVICE_NAME: postgres
+    ports:
+      - 5432:5432
     volumes:
       - ./docker-compose/postgres:/docker-entrypoint-initdb.d
     networks:
