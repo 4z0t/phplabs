@@ -14,10 +14,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('article_tag_relation', function (Blueprint $table) {
+        Schema::create('article_tag_relations', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Article::class)->constrained()->onDelete('cascade');
-            $table->foreignIdFor(Tag::class)->constrained()->onDelete('cascade');
+            $table->foreignIdFor(Article::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Tag::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('article_tag_relation');
+        Schema::dropIfExists('article_tag_relations');
     }
 };

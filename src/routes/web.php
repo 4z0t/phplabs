@@ -25,6 +25,27 @@ use App\Models\Tag;
 */
 
 Route::get('/', function () {
-    DB::table("articles")->take(10)->get()->dump();
-    DB::table("tags")->take(10)->get()->dump();
+
+    /** Commands used:
+     * php artisan migrate
+     * php artisan db:seed --class=ArticleSeeder
+     * php artisan db:seed --class=TagSeeder
+     * php artisan db:seed --class=ArticleTagSeeder
+     * php artisan migrate:status
+     */
+
+    DB::table("articles")
+        ->take(10)
+        ->get()
+        ->dump();
+
+    DB::table("tags")
+        ->take(10)
+        ->get()
+        ->dump();
+
+    DB::table("article_tag_relations")
+        ->take(10)
+        ->get()
+        ->dump();
 });

@@ -15,6 +15,6 @@ class Article extends Model
      */
     public function tags(): BelongsToMany
     {
-        return  $this->belongsToMany(Tag::class, "article_tag_relation");
+        return  $this->belongsToMany(Tag::class, "article_tag_relations");
     }
 }
