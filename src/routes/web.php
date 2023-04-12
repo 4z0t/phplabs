@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 use App\Classes\User;
 use App\Classes\UserValidator;
 use App\Classes\Comment;
-
+use App\Http\Controllers\ArticleController;
 use App\Models\Article;
 use App\Models\Tag;
 
@@ -49,3 +49,5 @@ Route::get('/', function () {
         ->get()
         ->dump();
 });
+
+Route::get('/articles',[ArticleController::class, "index"]);
