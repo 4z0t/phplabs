@@ -1,10 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 use App\Classes\User;
 use App\Classes\UserValidator;
 use App\Classes\Comment;
+
+use App\Models\Article;
+use App\Models\Tag;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +25,6 @@ use App\Classes\Comment;
 */
 
 Route::get('/', function () {
-    
+    DB::table("articles")->take(10)->get()->dump();
+    DB::table("tags")->take(10)->get()->dump();
 });
