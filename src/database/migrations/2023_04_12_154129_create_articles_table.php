@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string("name");
             $table->string("code");
             $table->string("contents");
-            $table->dateTime("creationTime");
+            $table->dateTime("creation_time");
             $table->string("author");
             $table->timestamps();
         });
