@@ -20,7 +20,7 @@ services:
     environment:
       POSTGRES_USER: ${DB_USERNAME}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: docker
+      POSTGRES_DB: ${DB_DATABASE}
       SERVICE_TAGS: dev
       SERVICE_NAME: postgres
     ports:
