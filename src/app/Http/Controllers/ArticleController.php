@@ -9,6 +9,19 @@ use Illuminate\Support\Facades\DB;
 
 class ArticleController extends Controller
 {
+
+    public function getByCode(string $code): View
+    {
+        $articles = DB::table("articles")->where("code", $code);
+
+        if ($articles->get()->isEmpty())
+            return abort(404);
+
+        return view('articles', [
+            'articles' => $articles->paginate()
+        ]);
+    }
+
     public function index(): View
     {
         return view('articles', [

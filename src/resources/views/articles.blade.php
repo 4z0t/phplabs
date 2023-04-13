@@ -13,13 +13,14 @@
                 <div class="article-container">
                     <h2> {{ $article->name }} </h2>
                     <p> {{ $article->contents }} </p>
-                    <p> {{ $article->author }} </p>
+                    <p>author {{ $article->author }} </p>
+                    <p>created at {{ $article->creation_time }} </p>
                 </div>
             @endforeach
         </div>
         {{ $articles->links() }}
     </div>
 
-    <link href="{{ URL::asset('css/article.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/article.css') }}" rel="stylesheet" type="text/css">
 </body>
 </html>

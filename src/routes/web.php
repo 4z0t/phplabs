@@ -51,3 +51,4 @@ Route::get('/', function () {
 });
 
 Route::get('/articles', [ArticleController::class, "index"]);
+Route::get('/article/{code}', [ArticleController::class, "getByCode"]);
