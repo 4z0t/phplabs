@@ -50,4 +50,4 @@ Route::get('/', function () {
         ->dump();
 });
 
-Route::get('/articles',[ArticleController::class, "index"]);
+Route::get('/articles', [ArticleController::class, "index"]);
