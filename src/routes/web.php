@@ -50,5 +50,7 @@ Route::get('/', function () {
         ->dump();
 });
 
-Route::get('/articles', [ArticleController::class, "index"]);
-Route::get('/article/{code}', [ArticleController::class, "getByCode"]);
+Route::prefix("/articles")->group(function () {
+    Route::get('/', [ArticleController::class, "index"]);
+    Route::get('/{code}', [ArticleController::class, "getByCode"]);
+});
