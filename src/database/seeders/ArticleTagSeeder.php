@@ -20,7 +20,7 @@ class ArticleTagSeeder extends Seeder
         $articles = Article::all();
         $tags = Tag::all();
 
-        $articles->each(function ($article) use ($tags) {
+        $articles->each(function (Article $article) use ($tags) {
             $article->tags()->attach(
                 $tags->random(10)->pluck('id')->toArray()
             );

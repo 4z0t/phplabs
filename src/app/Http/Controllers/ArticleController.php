@@ -19,7 +19,7 @@ class ArticleController extends Controller
             return abort(404);
 
         $article = $articles->get(0);
-        
+
         return view('articleById', [
             "tags" => $article->tags()->get(),
             'article' => $article
@@ -29,7 +29,7 @@ class ArticleController extends Controller
     public function index(): View
     {
         return view('articles', [
-            'articles' => DB::table("articles")->paginate(10)
+            'articles' => Article::query()->paginate(10)
         ]);
     }
 }
