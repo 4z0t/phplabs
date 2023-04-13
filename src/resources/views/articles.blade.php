@@ -10,14 +10,18 @@
 
 <body>
     <div>
+        <label>        </label>
+    </div>
+    <div>
         <div class="container">
             @foreach ($articles as $article)
-            <div class="article-container">
-                <h2> {{ $article->name }} </h2>
-                <p> {{ $article->contents }} </p>
-                <p>author {{ $article->author }} </p>
-                <p>created at {{ $article->creation_time }} </p>
-            </div>
+                <div class="article-container">
+                    <h2> {{ $article->name }} </h2>
+                    <p> {{ $article->code }} </p>
+                    <p> {{ $article->contents }} </p>
+                    <p>author {{ $article->author }} </p>
+                    <p>created at {{ $article->creation_time }} </p>
+                </div>
             @endforeach
         </div>
         {{ $articles->links() }}
