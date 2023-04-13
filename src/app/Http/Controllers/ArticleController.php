@@ -13,7 +13,9 @@ class ArticleController extends Controller
     public function getByCode(string $code): View
     {
 
-        $articles = Article::query()->where("code", "=", $code)->get();
+        $articles = Article::query()
+            ->where("code", "=", $code)
+            ->get();
 
         if ($articles->isEmpty())
             return abort(404);
@@ -21,7 +23,10 @@ class ArticleController extends Controller
         $article = $articles->get(0);
 
         return view('articleById', [
-            "tags" => $article->tags()->orderBy("name")->get(),
+            "tags" => $article
+                ->tags()
+                ->orderBy("name")
+                ->get(),
             'article' => $article
         ]);
     }

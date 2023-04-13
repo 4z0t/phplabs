@@ -22,7 +22,10 @@ class ArticleTagSeeder extends Seeder
 
         $articles->each(function (Article $article) use ($tags) {
             $article->tags()->attach(
-                $tags->random(10)->pluck('id')->toArray()
+                $tags
+                    ->random(10)
+                    ->pluck('id')
+                    ->toArray()
             );
         });
     }
