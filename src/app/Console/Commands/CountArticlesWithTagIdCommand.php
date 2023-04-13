@@ -32,10 +32,12 @@ class CountArticlesWithTagIdCommand extends Command
         $id = intval($this->argument("id"));
         $tag = Tag::query()->find($id);
 
-        if ($tag === null)
+        if ($tag === null) {
             $this->error("Tag with id $id not found");
+            return;
+        }
 
         $count = $tag->articles()->count();
-        $this->line( "Articles with tag: $count");
+        $this->line("Articles with tag: $count");
     }
 }
