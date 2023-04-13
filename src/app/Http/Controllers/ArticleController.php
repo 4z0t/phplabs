@@ -12,13 +12,17 @@ class ArticleController extends Controller
 
     public function getByCode(string $code): View
     {
-        $articles = DB::table("articles")->where("code", $code);
+
+        $articles = Article::query()->where("code", "=", $code);
 
         if ($articles->get()->isEmpty())
             return abort(404);
 
-        return view('articles', [
-            'articles' => $articles->paginate()
+        $article = $articles->get()->get(0);
+        
+        return view('articleById', [
+            "tags" => $article->tags()->get(),
+            'article' => $article
         ]);
     }
 
