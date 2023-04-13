@@ -12,7 +12,7 @@
     <div>
         <div class="container">
             @foreach ($tags as $tag)
-            <h3> {{ $tag->name }} </h3>
+                <h3> {{ $tag->name }} </h3>
             @endforeach
 
             <div class="article-container">

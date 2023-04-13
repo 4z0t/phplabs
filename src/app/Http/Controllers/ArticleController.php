@@ -21,7 +21,7 @@ class ArticleController extends Controller
         $article = $articles->get(0);
 
         return view('articleById', [
-            "tags" => $article->tags()->get(),
+            "tags" => $article->tags()->orderBy("name")->get(),
             'article' => $article
         ]);
     }
