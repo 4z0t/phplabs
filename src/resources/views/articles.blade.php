@@ -14,6 +14,10 @@
             <label> Filter by Name </label>
             <input type="text" name="article-name" value="{{ request()->get("article-name") ?: ""}}">
         </form>
+        <form method="GET">
+            <label> Filter by Tag </label>
+            <input type="text" name="tag-name" value="{{ request()->get("tag-name") ?: ""}}">
+        </form>
     </div>
     <div>
         <div class="container">
