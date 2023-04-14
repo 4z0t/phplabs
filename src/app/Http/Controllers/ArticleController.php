@@ -39,8 +39,8 @@ class ArticleController extends Controller
             $articles = $articles->where("name", "like", "%{$request->get("article-name")}%");
         }
         if ($request->has("tag-name") and !empty($request->get("tag-name"))) {
-            $articles = $articles->withWhereHas("tags", function (Builder $query) use ($request) {
-                $query->where("name", "like", "%{$request->get("tag-name")}%");
+            $articles = $articles->withWhereHas("tags", function (Builder $tags) use ($request) {
+                $tags->where("name", "like", "%{$request->get("tag-name")}%");
             });
         }
 
