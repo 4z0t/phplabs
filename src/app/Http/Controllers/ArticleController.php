@@ -34,7 +34,7 @@ class ArticleController extends Controller
     public function index(Request $request): View
     {
         $articles = Article::query();
-        if ($request->has("article-name")) {
+        if ($request->has("article-name") and !empty($request->get("article-name")) ) {
             $articles = $articles->where("name", "like", "%{$request->get("article-name")}%");
         }
 
