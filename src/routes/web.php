@@ -1,10 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 use App\Classes\User;
 use App\Classes\UserValidator;
 use App\Classes\Comment;
+use App\Http\Controllers\ArticleController;
+use App\Models\Article;
+use App\Models\Tag;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,46 +25,32 @@ use App\Classes\Comment;
 */
 
 Route::get('/', function () {
-    $user1 = new User("Sasha", "Mail");
-    $user2 = new User("", "");
 
-    $user1->creationTime->modify('-1 year');
+    /** Commands used:
+     * php artisan migrate
+     * php artisan db:seed --class=ArticleSeeder
+     * php artisan db:seed --class=TagSeeder
+     * php artisan db:seed --class=ArticleTagSeeder
+     * php artisan migrate:status
+     */
 
+    DB::table("articles")
+        ->take(10)
+        ->get()
+        ->dump();
 
-    $validator = new UserValidator();
-    $errors1 = $validator->validate($user1);
-    $errors2 = $validator->validate($user2);
+    DB::table("tags")
+        ->take(10)
+        ->get()
+        ->dump();
 
+    DB::table("article_tag_relations")
+        ->take(10)
+        ->get()
+        ->dump();
+});
 
-    echo "user1" . "<br/>";
-    foreach ($errors1 as $field => $constrainsErrors) {
-        if (count($constrainsErrors) > 0) {
-            echo "$field: $constrainsErrors<br/>";
-        }
-    }
-    echo "user2" . "<br/>";
-    foreach ($errors2 as $field => $constrainsErrors) {
-        if (count($constrainsErrors) > 0) {
-            echo "$field: $constrainsErrors<br/>";
-        }
-    }
-
-
-
-    $comments = [
-        new Comment($user1, "Hello world!"),
-        new Comment($user1, "AAAAAAA"),
-        new Comment($user2, "BBBBBBBBBB"),
-        new Comment($user2, ",mfnsdkjfhdskfhksdfj"),
-    ];
-
-    $checkDate = new DateTime('now');
-    $checkDate->modify('-1 month');
-
-
-    foreach ($comments as $comment) {
-        if ($comment->user->creationTime > $checkDate) {
-            echo $comment->text . "<br/>";
-        }
-    }
+Route::prefix("/articles")->group(function () {
+    Route::get('/', [ArticleController::class, "index"]);
+    Route::get('/{code}', [ArticleController::class, "getByCode"]);
 });
