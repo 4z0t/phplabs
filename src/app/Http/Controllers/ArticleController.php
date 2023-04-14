@@ -31,10 +31,15 @@ class ArticleController extends Controller
         ]);
     }
 
-    public function index(): View
+    public function index(Request $request): View
     {
+        $articles = Article::query();
+        if ($request->has("article-name")) {
+            $articles = $articles->where("name", "like", "%{$request->get("article-name")}%");
+        }
+
         return view('articles', [
-            'articles' => Article::query()->paginate(10)
+            'articles' => $articles->paginate(10)
         ]);
     }
 }

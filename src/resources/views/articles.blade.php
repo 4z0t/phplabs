@@ -10,7 +10,10 @@
 
 <body>
     <div>
-        <label>        </label>
+        <form method="GET">
+            <label> Filter by Name </label>
+            <input type="text" name="article-name" value="{{ request()->get("article-name") ?: ""}}">
+        </form>
     </div>
     <div>
         <div class="container">
