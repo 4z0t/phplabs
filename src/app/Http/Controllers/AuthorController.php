@@ -14,31 +14,39 @@ use App\Models\Author;
 
 class AuthorController extends Controller
 {
-       /**
-     * All mods
+    /**
+     * All authors
      */
-    public function getMods() : ResourceCollection
+    public function getAuthors() : ResourceCollection
     {
         return AuthorResource::collection(Author::all());
     }
 
     /**
-     * Creates mod from request
+     * Author by id
      */
-    public function createMod(CreateAuthorRequest $request, CreateAuthorAction $action) : AuthorResource
+    public function getAuthor(int $id) : AuthorResource
+    {
+        return new AuthorResource(Author::findOrFail($id));
+    }
+
+    /**
+     * Creates author from request
+     */
+    public function createAuthor(CreateAuthorRequest $request, CreateAuthorAction $action) : AuthorResource
     {
         return new AuthorResource($action->handle($request));
     }
 
     /**
-     * Deletes mod by id
+     * Deletes author by id
      */
-    public function deleteMod(int $id, DeleteAuthorAction $action) : Response
+    public function deleteAuthor(int $id, DeleteAuthorAction $action) : Response
     {
         return $action->handle($id);
     }
 
-    public function patchMod(int $id, UpdateAuthorRequest $request, UpdateAuthorAction $action) : AuthorResource
+    public function patchAuthor(int $id, UpdateAuthorRequest $request, UpdateAuthorAction $action) : AuthorResource
     {
         return new AuthorResource($action->handle($id, $request->validated()));
     }

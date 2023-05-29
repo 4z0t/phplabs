@@ -24,6 +24,14 @@ class ModController extends Controller
     }
 
     /**
+     * Mod by id
+     */
+    public function getAuthor(int $id) : ModResource
+    {
+        return new ModResource(Mod::findOrFail($id));
+    }
+
+    /**
      * Creates mod from request
      */
     public function createMod(CreateModRequest $request, CreateModAction $action) : ModResource
