@@ -3,5 +3,10 @@
 return [
     'path' => 'api/swagger',
 
-    'urls' => [],
+    'urls' => [
+        [
+            'url' => 'openapi.yaml',
+            'name' => 'Mods'
+        ],
+    ],
 ];
