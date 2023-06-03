@@ -20,14 +20,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('v1/mods', [ModController::class, 'getMods']);
+Route::get('v1/mods', [ModController::class, 'getMods']);
 Route::get('v1/mods/{id}', [ModController::class, 'getMod']);
 Route::post('v1/mods', [ModController::class, 'createMod']);
 Route::delete('v1/mods/{id}', [ModController::class, 'deleteMod']);
 Route::put('v1/mods/{id}', [ModController::class, 'patchMod']);
 Route::patch('v1/mods/{id}', [ModController::class, 'patchMod']);
 
-Route::post('v1/authors', [AuthorController::class, 'getAuthors']);
+Route::get('v1/authors', [AuthorController::class, 'getAuthors']);
 Route::get('v1/authors/{id}', [AuthorController::class, 'getAuthor']);
 Route::post('v1/authors', [AuthorController::class, 'createAuthor']);
 Route::delete('v1/authors/{id}', [AuthorController::class, 'deleteAuthor']);
