@@ -449,6 +449,19 @@ components:
         updated_at:
           type: "string"
           format: "date-time"
+    Author:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: "string"
+        created_at:
+          type: "string"
+          format: "date-time"
+        updated_at:
+          type: "string"
+          format: "date-time"
     Response:
       type: object
       properties:
