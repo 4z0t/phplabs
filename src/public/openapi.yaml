@@ -422,6 +422,383 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Response'
+  /api/v1/authors:
+    post:
+      tags:
+      - "Author Endpoints"
+      operationId: "createAuthor"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Author'
+      responses:
+        "200":
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "201":
+          description: "Created"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "400":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "401":
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "403":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "404":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+    get:
+      tags:
+      - "Author Endpoints"
+      operationId: "getAuthors"
+      responses:
+        "200":
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "201":
+          description: "Created"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "400":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "401":
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "403":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "404":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        default:
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+  /api/v1/authors/{id}:
+    get:
+      tags:
+      - "Author Endpoints"
+      operationId: "getMod"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type : integer
+            format: int64
+      responses:
+        "200":
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "201":
+          description: "Created"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "400":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "401":
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "403":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "404":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        default:
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+    delete:
+      tags:
+      - "Author Endpoints"
+      operationId: "deleteAuthor"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type : integer
+            format: int64
+      responses:
+        "200":
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "201":
+          description: "Created"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "400":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "401":
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "403":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "404":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        default:
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+    put:
+      tags:
+      - "Author Endpoints"
+      operationId: "putAuthor"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: "string"
+                created_at:
+                  type: "string"
+                  format: "date-time"
+                updated_at:
+                  type: "string"
+                  format: "date-time"
+      responses:
+        "200":
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "201":
+          description: "Created"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "400":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "401":
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "403":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "404":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        default:
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+    patch:
+      tags:
+      - "Author Endpoints"
+      operationId: "patchAuthor"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: query
+          name: "name"
+          schema:
+            type: "string"
+        - in: query
+          name: "created_at"
+          schema:
+            type: "string"
+            format: "date-time"
+        - in: query
+          name: "updated_at"
+          schema:
+            type: "string"
+            format: "date-time"
+      responses:
+        "200":
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "201":
+          description: "Created"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "400":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "401":
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "403":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "404":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        default:
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
 components:
   schemas:
     Mod:
