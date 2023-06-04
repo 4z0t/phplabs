@@ -19,7 +19,7 @@ class ModResource extends JsonResource
             "id" => $this->id,
             "name" => $this->name,
             "description" => $this->description,
-            "author" => AuthorResource::collection(Author::find($this->author_id)),
+            "author" => $this->author_id == null ? null : AuthorResource::collection(Author::find($this->author_id)),
             "major_version" => $this->major_version,
             "minor_version" => $this->minor_version,
             "patch_version" => $this->patch_version,

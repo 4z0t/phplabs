@@ -826,6 +826,13 @@ components:
         updated_at:
           type: "string"
           format: "date-time"
+      required:
+        - name
+        - description
+        - author_id
+        - major_version
+        - minor_version
+        - patch_version
     Author:
       type: object
       properties:

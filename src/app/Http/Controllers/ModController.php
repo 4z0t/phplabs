@@ -26,7 +26,7 @@ class ModController extends Controller
     /**
      * Mod by id
      */
-    public function getAuthor(int $id) : ModResource
+    public function getMod(int $id) : ModResource
     {
         return new ModResource(Mod::findOrFail($id));
     }

@@ -20,4 +20,15 @@ use Illuminate\Database\Eloquent\Model;
 class Mod extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'id',
+        'name',
+        'description',
+        'author_id',
+        'major_version',
+        'minor_version',
+        'patch_version',
+        'link',
+        ];
 }
