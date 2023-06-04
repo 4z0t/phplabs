@@ -52,6 +52,7 @@ test('delete Author', function () {
     $author = Author::factory()->create();
     $response = $this->deleteJson("/api/v1/authors/{$author->id}");
     $response->assertStatus(200);
+    $this->assertDatabaseMissing('authors', ["id" => $author->id ]);
 });
 
 test('get failed Author', function () {

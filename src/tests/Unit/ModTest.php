@@ -54,6 +54,7 @@ test('delete Mod', function () {
     $mod = Mod::factory()->create();
     $response = $this->deleteJson("/api/v1/mods/{$mod->id}");
     $response->assertStatus(200);
+    $this->assertDatabaseMissing('mods', ["id" => $mod->id ]);
 });
 
 test('get failed Mod', function () {
