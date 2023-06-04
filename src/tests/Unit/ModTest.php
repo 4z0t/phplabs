@@ -2,8 +2,6 @@
 
 use App\Models\Mod;
 
-//uses(Tests\TestCase::class);
-
 test('create Mod', function () {
     $mod = Mod::factory()->make();
     $response = $this->postJson('/api/v1/mods', $mod->attributestoArray());
