@@ -18,8 +18,7 @@ class AuthorFactory extends Factory
     public function definition(): array
     {
         return [
-            "name" =>  $this->unique()->name(),
-            "creation_time" => now(),
+            "name" =>  $this->faker->unique()->name(),
         ];
     }
 }

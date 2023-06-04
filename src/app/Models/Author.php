@@ -18,6 +18,8 @@ class Author extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['id', 'name'];
+
     public function mods() : HasMany
     {
        return $this->hasMany(Mod::class);
