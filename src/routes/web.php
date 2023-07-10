@@ -10,6 +10,7 @@ use App\Classes\Comment;
 use App\Http\Controllers\ArticleController;
 use App\Models\Article;
 use App\Models\Tag;
+use Ensi\LaravelServeSwagger\Controllers\SwaggerController;
 
 
 
